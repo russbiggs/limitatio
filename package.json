@@ -1,0 +1,52 @@
+{
+    "name": "limitatio",
+    "version": "0.1.0",
+    "description": "calculates Roman centuriation given a central survey point",
+    "main": "dist/limitatio.node.js",
+    "scripts": {
+        "build": "npm run pretest && rollup -c && uglifyjs -b beautify=false -o dist/limitatio.min.js -cm -- dist/limitatio.js",
+        "pretest": "rm -rf dist && mkdir dist && rollup -g @turf/distance,@turf/helpers,@turf/square-grid,@turf/transform-rotate,cheap-ruler -f cjs -- src/index.js >> dist/limitatio.node.js",
+        "test": "tape 'tests/**/*-test.js'",
+        "prepublishOnly": "npm run test && rollup -c && uglifyjs -b beautify=false -o dist/limitatio.min.js -cm -- dist/limitatio.js"
+    },
+    "unpkg": "dist/limitatio.min.js",
+    "keywords": [
+        "centuriation",
+        "agrimensor",
+        "limitatio",
+        "Roman",
+        "agriculture",
+        "Land use",
+        "Planning",
+        "archaeology"
+    ],
+    "author": {
+        "name": "Russ Biggs",
+        "url": "https://russbiggs.com"
+    },
+    "license": "ISC",
+    "homepage": "https://github.com/russbiggs/limitatio",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/russbiggs/limitatio.git"
+    },
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-plugin-external-helpers": "^6.22.0",
+        "babel-preset-env": "^1.6.1",
+        "babel-preset-es2015": "^6.24.1",
+        "rollup": "^0.57.1",
+        "rollup-plugin-babel": "^3.0.4",
+        "rollup-plugin-commonjs": "^9.1.0",
+        "rollup-plugin-node-resolve": "^3.3.0",
+        "tape": "^4.9.0",
+        "uglify-js": "^3.3.22"
+    },
+    "dependencies": {
+        "@turf/distance": "^6.0.1",
+        "@turf/helpers": "^6.1.3",
+        "@turf/square-grid": "^6.0.2",
+        "@turf/transform-rotate": "^5.1.5",
+        "cheap-ruler": "^2.5.1"
+    }
+}
