@@ -45,7 +45,7 @@ let limitatio = limitatio(groma, 9);
 
 ## Reference
 
-limitatio(groma[, bearing])
+limitatio(groma, bearing)
 
 #### Parameters
 
